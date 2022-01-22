@@ -1,0 +1,58 @@
+Alice, nous avons besoin de toi de toute urgence.
+CrypteSeq est maintenant au point. J'espere qu'il nous apportera enfin la securite qu'il nous faut. En voici le principe :
+- durant l'encryption, je maintiens une sequence de tous les caracteres deja rencontres, dans l'ordre
+- pour chaque caractere C a crypter, je cherche dans la sequence s'il a deja ete rencontre
+  - si c'est la premiere fois, je l'ajoute en fin de sequence et je le laisse 
+    inchange dans le message crypte
+  - sinon, je considere D qui est soit:
+    - le caractere qui precede C dans la sequence
+    - le dernier caractere de la sequence si C est le premier caractere de la sequence
+    je remplace C par D dans le message crypte et je deplace C a la fin de la sequence 
+
+Prouve moi que tu as bien compris ce nouvel algorithme en me renvoyant ce 
+message complet encode avec CrypteSeq.
+
+Fais au plus vite.
+Bob
+
+PS: Pour t'aider, le debut de ce message serait transforme en :
+
+> Alice, nous,avn,uubcnvlvvdbntssenninn, ddorgtslg.
+> CuypocStqoSbpqm,bgsqimeiseotydmeecuJ'mqu'Cp...
+
+Et voici un exemple d'encryption sur le texte 'abcbcca'
+
+Input: abcbcca
+
+Seq:    <vide>
+Output: <vide>
+
+Char: a
+Seq:    a
+Output: a
+
+Char: b
+Seq:    ab
+Output: ab
+
+Char: c
+Seq:    abc
+Output: abc
+
+Char: b
+Seq:    acb
+Output: abca
+
+Char: c
+Seq:    abc
+Output: abcaa
+
+Char: c
+Seq:    abc
+Output: abcaab
+
+Char: a
+Seq:    bca
+Output: abcaabc
+
+Output final: abcaabc
